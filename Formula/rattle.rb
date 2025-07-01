@@ -17,8 +17,10 @@ class Rattle < Formula
   def install
     if OS.mac?
       bin.install "rattle.app" => "rattle"
+      pkgshare.install "App.framework/Resources/flutter_assets/assets/r/packages.R" => "packages.R"
     elsif OS.linux?
       bin.install "rattle"
+      pkgshare.install "data/flutter_assets/assets/r/packages.R" => "packages.R"
     end
     pkgshare.install "install_rattle_pkgs.R"
   end
@@ -31,7 +33,7 @@ class Rattle < Formula
       amongst the top right icons.
 
       You can also install them all by running:
-        Rscript #{opt_pkgshare}/install_rattle_pkgs.R
+        Rscript #{opt_pkgshare}/packages.R
     EOS
   end
 
