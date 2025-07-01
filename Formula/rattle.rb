@@ -22,7 +22,6 @@ class Rattle < Formula
       bin.install "rattle"
       pkgshare.install "data/flutter_assets/assets/r/packages.R" => "packages.R"
     end
-    pkgshare.install "install_rattle_pkgs.R"
   end
 
   def caveats
