@@ -9,11 +9,7 @@ cask "rattle" do
 
   app "rattle.app"
 
-  # Optional: symlink CLI binary if there is one inside your app
-
-  binary "#{appdir}/rattle.app/Contents/MacOS/rattle", target: "rattle"
-
-  # Optional: add dependencies as caveats if needed
+  # Add a caveat to inform of the need to install R packages.
 
   caveats do
     <<~EOS
