@@ -16,7 +16,7 @@
 
   def install
     if OS.mac?
-      bin.install "rattle.app" => "rattle"
+      bin.install "rattle"
       pkgshare.install "App.framework/Resources/flutter_assets/assets/r/packages.R" => "packages.R"
     elsif OS.linux?
       # Install everything in libexec. The rattle executable needs to
