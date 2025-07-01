@@ -19,18 +19,17 @@
       bin.install "rattle.app" => "rattle"
       pkgshare.install "App.framework/Resources/flutter_assets/assets/r/packages.R" => "packages.R"
     elsif OS.linux?
-      # Install the .so files to libexec
-      libexec.install Dir["lib/*.so"]
-      # Install the binary to libexec as well
+      # Install everything in libexec
       libexec.install "rattle"
+      libexec.install Dir["lib"]
+      libexec.install Dir["data"]
 
       # Create a wrapper script in bin/
-      (bin/"rattleng").write <<~EOS
+      (bin/"rattle").write <<~EOS
             #!/bin/bash
-            export LD_LIBRARY_PATH="#{libexec}:$LD_LIBRARY_PATH"
             exec "#{libexec}/rattle" "$@"
       EOS
-      chmod 0755, bin/"rattleng"
+      chmod 0755, bin/"rattle"
 
       # Install the R script.
       pkgshare.install "data/flutter_assets/assets/r/packages.R" => "packages.R"
