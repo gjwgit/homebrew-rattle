@@ -16,17 +16,21 @@
 
   def install
     if OS.mac?
-      # Install the .app bundle.
+      # 20250702 chatgpt
 
-      prefix.install Dir["rattle.app"]
+      app "rattle.app"
 
-      # Symlink the CLI to bin/
+      # # Install the .app bundle.
 
-      bin.install_symlink prefix/"rattle.app/Contents/MacOS/rattle"
+      # prefix.install Dir["rattle.app"]
 
-      #bin.install "rattle.app/Contents/MacOS/rattle" => "rattle"
+      # # Symlink the CLI to bin/
 
-      #pkgshare.install "App.framework/Resources/flutter_assets/assets/r/packages.R" => "packages.R"
+      # bin.install_symlink prefix/"rattle.app/Contents/MacOS/rattle"
+
+      # #bin.install "rattle.app/Contents/MacOS/rattle" => "rattle"
+
+      # #pkgshare.install "App.framework/Resources/flutter_assets/assets/r/packages.R" => "packages.R"
     elsif OS.linux?
       # Install everything in libexec. The rattle executable needs to
       # find lib and data.
