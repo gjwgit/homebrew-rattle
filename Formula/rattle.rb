@@ -18,11 +18,13 @@
     if OS.mac?
       # Install the .app bundle.
 
-      prefix.install "rattle.app"
+      #prefix.install "rattle.app"
 
       # Symlink the CLI to bin/
 
-      bin.install_symlink prefix/"rattle.app/Contents/MacOS/rattle"
+      #bin.install_symlink rattle.app/Contents/MacOS/rattle
+
+      bin.install "rattle.app/Contents/MacOS/rattle" => "rattle"
 
       pkgshare.install "App.framework/Resources/flutter_assets/assets/r/packages.R" => "packages.R"
     elsif OS.linux?
