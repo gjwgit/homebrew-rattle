@@ -1,4 +1,4 @@
-class Rattle < Formula
+ class Rattle < Formula
   desc "A Flutter based app for the Data Scientist using R"
   homepage "https://github.com/gjwgit/rattleng"
   version "6.5.2" # Update to match your release
@@ -19,8 +19,24 @@ class Rattle < Formula
       bin.install "rattle.app" => "rattle"
       pkgshare.install "App.framework/Resources/flutter_assets/assets/r/packages.R" => "packages.R"
     elsif OS.linux?
-      bin.install "rattle"
+      # Install the .so files to libexec
+      libexec.install Dir["lib/*.so"]
+      # Install the binary to libexec as well
+      libexec.install "rattle"
+
+      # Create a wrapper script in bin/
+      (bin/"rattleng").write <<~EOS
+            #!/bin/bash
+            export LD_LIBRARY_PATH="#{libexec}:$LD_LIBRARY_PATH"
+            exec "#{libexec}/rattle" "$@"
+      EOS
+      chmod 0755, bin/"rattleng"
+
+      # Install the R script.
       pkgshare.install "data/flutter_assets/assets/r/packages.R" => "packages.R"
+
+      #bin.install "rattle"
+      #pkgshare.install "data/flutter_assets/assets/r/packages.R" => "packages.R"
     end
   end
 
