@@ -22,7 +22,7 @@
 
       # Symlink the CLI to bin/
 
-      bin.install_symlink prefix/"rattle.app/Contents/MacOS/rattle"
+      # bin.install_symlink prefix/"rattle.app/Contents/MacOS/rattle"
 
       #bin.install "rattle.app/Contents/MacOS/rattle" => "rattle"
 
