@@ -8,7 +8,7 @@ class Rattle < Formula
     sha256 "d7684f161b2ec60ffb10052b536f4fee9756a4e9b075f5cb4cbd52bbc97839af"
   elsif OS.linux?
     url "https://access.togaware.com/rattle-dev-linux.zip"
-    sha256 "63868f7120a3dae3b068c0b985a5886ef350b91acd0de28f43df151f6b2c217"
+    sha256 "763868f7120a3dae3b068c0b985a5886ef350b91acd0de28f43df151f6b2c217"
   end
 
   license "GPLv3"
