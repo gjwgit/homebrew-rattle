@@ -16,13 +16,10 @@
 
   def install
     if OS.mac?
-      # 20250702 chatgpt
-
-      app "rattle.app"
-
-      # # Install the .app bundle.
+      # Install the .app bundle. usually it should be a cask.
 
       # prefix.install Dir["rattle.app"]
+      libexec.install "rattle.app"
 
       # # Symlink the CLI to bin/
 
@@ -61,6 +58,8 @@
 
   def caveats
     <<~EOS
+      SEE #{opt_libexec}/rattle.app
+
       To use rattle, R is required, together with a suite of R packages.
 
       The R packages can be installed through Rattle's Download button
